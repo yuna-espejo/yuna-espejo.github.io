@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPOP 1 – Currículum Vitae Competencial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0e0e;
+    --white: #f5f2ed;
+    --red: #e63022;
+    --red-dark: #b01e12;
+    --gray: #6b6b6b;
+    --gray-light: #e8e4de;
+    --accent: #1a1a1a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--black);
+    color: var(--white);
+    padding: 4rem 3rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border: 1px solid rgba(230,48,34,0.3);
+    border-radius: 50%;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 200px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(230,48,34,0.15);
+    border-radius: 50%;
+  }
+
+  .nav-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 em {
+    color: var(--red);
+    font-style: italic;
+  }
+
+  .subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: rgba(245,242,237,0.5);
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0 3rem;
+    display: flex;
+    gap: 0;
+  }
+
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: rgba(245,242,237,0.5);
+    text-decoration: none;
+    padding: 0.9rem 1.2rem 0.9rem 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  nav a:hover, nav a.active {
+    color: var(--white);
+    border-bottom-color: var(--red);
+  }
+
+  /* MAIN LAYOUT */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* LEFT COLUMN */
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .intro-text {
+    font-size: 1.05rem;
+    color: #2a2a2a;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 55ch;
+    border-left: 2px solid var(--red);
+    padding-left: 1.2rem;
+  }
+
+  /* COMPETÈNCIES */
+  .comp-group {
+    margin-bottom: 2.5rem;
+  }
+
+  .comp-group h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .comp-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .comp-item:last-child { border-bottom: none; }
+
+  .comp-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .comp-bar {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gray-light);
+  }
+
+  .dot.filled { background: var(--red); }
+
+  /* EXPERIÈNCIA */
+  .exp-item {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+  }
+
+  .exp-role {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--gray);
+  }
+
+  .exp-company {
+    font-size: 0.82rem;
+    color: var(--red);
+    font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+
+  .exp-desc {
+    font-size: 0.83rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* RIGHT COLUMN – sidebar */
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .sidebar-card {
+    background: var(--black);
+    color: var(--white);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .sidebar-card h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(245,242,237,0.2);
+    margin: 0.2rem;
+    letter-spacing: 0.05em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    margin-bottom: 0.9rem;
+    font-size: 0.83rem;
+    color: rgba(245,242,237,0.8);
+  }
+
+  .contact-icon {
+    color: var(--red);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    min-width: 48px;
+    padding-top: 0.1rem;
+  }
+
+  .fortalesa-item {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(245,242,237,0.1);
+    font-size: 0.83rem;
+    color: rgba(245,242,237,0.85);
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .fortalesa-item::before {
+    content: '—';
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .fortalesa-item:last-child { border-bottom: none; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-light);
+    padding: 2rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .footer-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--red);
+    border-color: var(--red);
+  }
+
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+    header { padding: 3rem 1.5rem 2rem; }
+    nav { padding: 0 1.5rem; overflow-x: auto; }
+    footer { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-tag">IPOP 1 · ASIX2 · Institut Sa Palomera</div>
+  <h1>[El teu nom]<br><em>Software Engineer</em><br>in progress</h1>
+  <p class="subtitle">Junior Consultant · Futura Enginyer Informàtica · F1 Tech</p>
+</header>
+
+<nav>
+  <a href="ipop1.html" class="active">01 / CV Competencial</a>
+  <a href="ipop2.html">02 / Projecció Professional</a>
+  <a href="ipop3.html">03 / Pla de Promoció</a>
+</nav>
+
+<main>
+  <!-- LEFT -->
+  <div class="left-col">
+
+    <div class="section-label">Perfil professional</div>
+    <div class="intro-text">
+      Sóc una professional en transició cap al món del desenvolupament de software, amb experiència real en consultoria tecnològica i una visió clara: treballar com a Software Engineer en l'entorn de la Fórmula 1. Combino rigor analític, curiositat tècnica i passió per la tecnologia d'alt rendiment.
+    </div>
+
+    <!-- COMPETÈNCIES TÈCNIQUES -->
+    <div class="section-label">Competències tècniques</div>
+    <div class="comp-group">
+      <h3>Sistemes i xarxes</h3>
+      <div class="comp-item">
+        <span class="comp-name">Administració de sistemes Linux</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Virtualització (VMware, Proxmox)</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Configuració de xarxes (TCP/IP, VLAN)</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Seguretat i firewalls</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <h3>Programació i desenvolupament</h3>
+      <div class="comp-item">
+        <span class="comp-name">Python (scripting, automatització)</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Bash / Shell scripting</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">SQL i bases de dades</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Git i control de versions</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+    </div>
+
+    <!-- COMPETÈNCIES TRANSVERSALS -->
+    <div class="section-label" style="margin-top:2rem;">Competències transversals</div>
+    <div class="comp-group">
+      <h3>Habilitats professionals</h3>
+      <div class="comp-item">
+        <span class="comp-name">Resolució de problemes sota pressió</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Comunicació tècnica amb clients</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Gestió del temps i autoaprenentatge</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Treball en equips multidisciplinaris</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Adaptabilitat i mentalitat de creixement</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+      </div>
+    </div>
+
+    <!-- EXPERIÈNCIA -->
+    <div class="section-label" style="margin-top:2rem;">Experiència professional</div>
+    <div class="comp-group">
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Junior IT Consultant</span>
+          <span class="exp-date">2024 – Actualitat</span>
+        </div>
+        <div class="exp-company">Timestamp Group</div>
+        <div class="exp-desc">Assessorament tècnic a clients en entorns d'infraestructura i sistemes. Diagnosi d'incidències, suport en migracions i gestió de projectes IT de petita i mitjana escala. Primer contacte professional amb metodologies de treball en entorn empresarial real.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-header">
+          <span class="exp-role">Cicle Formatiu ASIX (2n curs)</span>
+          <span class="exp-date">2023 – 2025</span>
+        </div>
+        <div class="exp-company">Institut Sa Palomera, Blanes</div>
+        <div class="exp-desc">Formació tècnica en administració de sistemes informàtics en xarxa. Pràctiques en virtualització, seguretat, xarxes corporatives i serveis cloud.</div>
+      </div>
+    </div>
+
+    <!-- IDIOMES -->
+    <div class="section-label" style="margin-top:2rem;">Idiomes</div>
+    <div class="comp-group">
+      <div class="comp-item">
+        <span class="comp-name">Català</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Castellà</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div>
+      </div>
+      <div class="comp-item">
+        <span class="comp-name">Anglès (en millora – clau per a F1)</span>
+        <div class="comp-bar"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div>
+      </div>
+    </div>
+
+  </div><!-- end left -->
+
+  <!-- RIGHT – SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <h3>Contacte</h3>
+      <div class="contact-item">
+        <span class="contact-icon">Email</span>
+        <span>el.teu@email.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">LinkedIn</span>
+        <span>linkedin.com/in/nomcognom</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">GitHub</span>
+        <span>github.com/nomcognom</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">Web</span>
+        <span>nomcognom.github.io</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Tecnologies conegudes</h3>
+      <span class="skill-tag">Linux</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Bash</span>
+      <span class="skill-tag">Git</span>
+      <span class="skill-tag">VMware</span>
+      <span class="skill-tag">Docker</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">TCP/IP</span>
+      <span class="skill-tag">AWS CLI</span>
+      <span class="skill-tag">Wireshark</span>
+      <span class="skill-tag">Windows Server</span>
+      <span class="skill-tag">Active Directory</span>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Fortaleses personals</h3>
+      <div class="fortalesa-item">Mentalitat analítica orientada a resultats</div>
+      <div class="fortalesa-item">Alta tolerància a l'aprenentatge accelerat</div>
+      <div class="fortalesa-item">Passió genuïna per la tecnologia esportiva d'alt rendiment</div>
+      <div class="fortalesa-item">Capacitat de gestionar múltiples rols alhora (feina + estudis)</div>
+      <div class="fortalesa-item">Perfil singular: del CFGS a la F1, amb visió clara</div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Formació en curs</h3>
+      <div class="fortalesa-item">ASIX2 – Institut Sa Palomera (2025)</div>
+      <div class="fortalesa-item">Eng. Informàtica – UOC (setembre 2025)</div>
+    </div>
+
+  </aside>
+</main>
+
+<footer>
+  <span class="footer-tag">IPOP 1 · CV Competencial · ASIX2 2024–25</span>
+  <div class="footer-links">
+    <a href="ipop2.html">Projecció →</a>
+    <a href="ipop3.html">Pla de Promoció →</a>
+  </div>
+</footer>
+
+</body>
+</html>
